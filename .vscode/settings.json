@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "src\\main\\java"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Downloaded Softwares\\ojdbc11.jar",
+        "c:\\Downloaded Softwares\\apache-tomcat-10.1.34\\lib\\servlet-api.jar"
+    ]
+}
