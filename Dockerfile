@@ -1,4 +1,4 @@
 FROM tomcat:10-jdk11
-COPY simplesearch.war /usr/local/tomcat/webapps/simplesearch.war
+COPY simplesearch /usr/local/tomcat/webapps/simplesearch
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
