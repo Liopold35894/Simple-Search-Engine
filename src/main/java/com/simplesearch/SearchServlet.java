@@ -207,7 +207,7 @@ public class SearchServlet extends HttpServlet {
         // Header with search bar (matches welcome page style)
         out.println("<div class='header'>");
         out.println("    <div class='search-container'>");
-        out.println("        <a href='http://localhost:8080/SimpleSearchEngine/' class='logo'>Simple Search</a>");
+        out.println("        <a href='https://simple-search-engine.onrender.com/SimpleSearchEngine/' class='logo'>Simple Search</a>");
         out.println("        <form action='search' method='get' class='search-bar'>");
         out.println("            <input type='text' name='searchTerm' class='search-input' value='" + (searchQuery != null ? searchQuery : "") + "'/>");
         out.println("        </form>");
@@ -219,7 +219,11 @@ public class SearchServlet extends HttpServlet {
         if (searchQuery != null && !searchQuery.trim().isEmpty()) {
             try {
                 // Database connection
-                Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/FREE", "C##simplesearch", "Liopold35894");
+                String db_url = System.getenv("DB_URL");
+                String db_username = System.getenv("DB_USER");
+                String db_password = System.getenv("DB_PASS");
+
+                Connection conn = DriverManager.getConnection(db_url, db_username, db_password);
 
                 // Get total results count
                 String countSql = "SELECT COUNT(*) AS total FROM websites WHERE LOWER(title) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?) OR LOWER(keywords) LIKE LOWER(?) OR LOWER(url) LIKE LOWER(?)";
